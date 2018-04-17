@@ -3,6 +3,8 @@
 <body style="margin:0">
 <canvas id="ex1">Broken</canvas><!--Makes the canvas-->
 <script>
+window.onload = function() {drawGraphic()};
+function drawGraphic() {
 var canvas  = document.getElementById("ex1");//Allows javascript to access the canvas object
 var context = canvas.getContext("2d");//Allows javascript to access the canvas data
 var height = 100;//Sets height
@@ -24,6 +26,7 @@ for (var i = 0; i < height * width; i++) {//This loops throught the colours and 
         y++;
     }
     context.fillRect(x,y, 1,1);//Adds rectangle of 1x1 pixels at (x,y)
+}
 }
 </script>
 </body>
