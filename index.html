@@ -3,25 +3,25 @@
 <body>
 <canvas id="ex1" width="100" height="100" style="border: 1px solid">Broken</canvas><!--Makes the canvas-->
 <script>
-var canvas  = document.getElementById("ex1");<!--Allows javascript to access the canvas object-->
-var context = canvas.getContext("2d");<!--Allows javascript to access the canvas data-->
-var height = 100;<!--Sets height-->
-var width = 100;<!--Sets width-->
+var canvas  = document.getElementById("ex1");//Allows javascript to access the canvas object
+var context = canvas.getContext("2d");//Allows javascript to access the canvas data
+var height = 100;//Sets height
+var width = 100;//Sets width
 var colours = ["#ff0000", "#ff7700", "#ffddff", "#00ff00", "#0000ff", "#8a2be2", "#c77df3"];
 var colourNo = colours.length;
-for (var i = 0; i < height * width; i++) {<!--This loops throught the colours and sets each pixel-->
+for (var i = 0; i < height * width; i++) {//This loops throught the colours and sets each pixel
+    var chosenColour = i;
+    while (chosenColour > colourNo - 1) {
+        chosenColour = chosenColour - colourNo;
+    }
+    context.fillStyle = colours[x];//Select colour
     var x = i;
-    while (x > colourNo - 1) {
-        x = x - colourNo;
+    var y = 0;
+    while (x > width - 1) {
+        x = x - width;
+        y++;
     }
-    context.fillStyle = colours[x];
-    var y = i;
-    var z = 0;
-    while (y > width - 1) {
-        y = y - width;
-        z++;
-    }
-    context.fillRect(y,z, 1,1);
+    context.fillRect(x,y, 1,1);//Adds rectangle of 1x1 pixels at (x,y)
 }
 </script>
 </body>
