@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>RentAPix</title>
 <link rel="shortcut icon" href="favicon.png">
 </head>
 <body style="margin:0">
@@ -10,13 +11,14 @@ window.onload = function() {drawGraphic()};
 function drawGraphic() {
 var canvas  = document.getElementById("ex1");//Allows javascript to access the canvas object
 var context = canvas.getContext("2d");//Allows javascript to access the canvas data
-var height = 100;//Sets height
-var width = 100;//Sets width
+var height = 800;//Sets height
+var width = 800;//Sets width
+var pixelSize = 16;//Sets pixel size
 canvas.height = height;
 canvas.width = width;
 var colours = ["#ff0000", "#ff7700", "#ffddff", "#00ff00", "#0000ff", "#8a2be2", "#c77df3"];
 var colourNo = colours.length;
-for (var i = 0; i < height * width; i++) {//This loops throught the colours and sets each pixel
+for (var i = 0; i < height * width / pixelSize; i++) {//This loops throught the colours and sets each pixel
     var chosenColour = i;
     while (chosenColour > colourNo - 1) {
         chosenColour = chosenColour - colourNo;
@@ -28,7 +30,7 @@ for (var i = 0; i < height * width; i++) {//This loops throught the colours and 
         x = x - width;
         y++;
     }
-    context.fillRect(x,y, 1,1);//Adds rectangle of 1x1 pixels at (x,y)
+    context.fillRect(x*pixelSize,y*pixelSize, pixelSize,pixelSize);//Adds rectangle of pixelSizeXpixelSize pixels at (x,y)
 }
 }
 </script>
