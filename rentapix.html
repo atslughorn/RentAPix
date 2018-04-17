@@ -1,0 +1,18 @@
+<!DOCTYPE html><!--Makes the website-->
+<html>
+<body>
+<canvas id="pixels" width="10" height="10" style="border: 1px solid">Broken</canvas><!--Makes the canvas-->
+<script>
+var height = "10";<!--Makes variable-->
+var width = "10";<!--Makes variable-->
+var canvas = document.getElementById("pixels");<!--Allows javascript to access the canvas-->
+var context = canvas.getContext=("2d");<!--Something-->
+var myImageData = context.createImageData(height, width);<!--Makes an empty image-->
+myImageData.data[40] = 255;
+myImageData.data[41] = 122;
+myImageData.data[42] = 120;
+myImageData.data[43] = 0;
+context.putImageData(myImageData, 10 , 10)<!--Puts image onto canvas-->
+</script>
+</body>
+</html>
