@@ -14,7 +14,7 @@ for (var i = 0; i < height * width; i++) {//This loops throught the colours and 
     while (chosenColour > colourNo - 1) {
         chosenColour = chosenColour - colourNo;
     }
-    context.fillStyle = colours[x];//Select colour
+    context.fillStyle = colours[chosenColour];//Select colour
     var x = i;
     var y = 0;
     while (x > width - 1) {
