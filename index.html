@@ -1,18 +1,28 @@
 <!DOCTYPE html><!--Makes the website-->
 <html>
 <body>
-<canvas id="pixels" width="10" height="10" style="border: 1px solid">Broken</canvas><!--Makes the canvas-->
+<canvas id="ex1" width="100" height="100" style="border: 1px solid">Broken</canvas><!--Makes the canvas-->
 <script>
-var height = "10";<!--Makes variable-->
-var width = "10";<!--Makes variable-->
-var canvas = document.getElementById("pixels");<!--Allows javascript to access the canvas-->
-var context = canvas.getContext=("2d");<!--Something-->
-var myImageData = context.createImageData(height, width);<!--Makes an empty image-->
-myImageData.data[40] = 255;
-myImageData.data[41] = 122;
-myImageData.data[42] = 120;
-myImageData.data[43] = 0;
-context.putImageData(myImageData, 10 , 10)<!--Puts image onto canvas-->
+var canvas  = document.getElementById("ex1");<!--Allows javascript to access the canvas object-->
+var context = canvas.getContext("2d");<!--Allows javascript to access the canvas data-->
+var height = 100;<!--Sets height-->
+var width = 100;<!--Sets width-->
+var colours = ["#ff0000", "#ff7700", "#ffddff", "#00ff00", "#0000ff", "#8a2be2", "#c77df3"];
+var colourNo = colours.length;
+for (var i = 0; i < height * width; i++) {<!--This loops throught the colours and sets each pixel-->
+    var x = i;
+    while (x > colourNo - 1) {
+        x = x - colourNo;
+    }
+    context.fillStyle = colours[x];
+    var y = i;
+    var z = 0;
+    while (y > width - 1) {
+        y = y - width;
+        z++;
+    }
+    context.fillRect(y,z, 1,1);
+}
 </script>
 </body>
 </html>
