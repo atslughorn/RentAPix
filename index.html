@@ -4,32 +4,23 @@
 <title>RentAPix</title>
 <link rel="shortcut icon" href="favicon.png">
 </head>
-<body style="margin:0">
-<canvas id="ex1">Broken</canvas><!--Makes the canvas-->
+<body style="margin:0; overflow:hidden"><!--No blank space and no scrollbar-->
+<canvas id="ex1" style="border: 1px solid">Broken</canvas><!--Makes the canvas-->
 <script>
 window.onload = function() {drawGraphic()};
 function drawGraphic() {
 var canvas  = document.getElementById("ex1");//Allows javascript to access the canvas object
 var context = canvas.getContext("2d");//Allows javascript to access the canvas data
-var height = 800;//Sets height
-var width = 800;//Sets width
+var height = window.innerHeight;//Sets height to window height
+var width = window.innerWidth;//Sets width to window height
 var pixelSize = 16;//Sets pixel size
 canvas.height = height;
 canvas.width = width;
 var colours = ["#ff0000", "#ff7700", "#ffff00", "#00ff00", "#0000ff", "#8a2be2", "#c77df3"];
-var colourNo = colours.length;
 for (var i = 0; i < height * width / pixelSize; i++) {//This loops throught the colours and sets each pixel
-    var chosenColour = i;
-    while (chosenColour > colourNo - 1) {
-        chosenColour = chosenColour - colourNo;
-    }
-    context.fillStyle = colours[chosenColour];//Select colour
-    var x = i;
-    var y = 0;
-    while (x > width - 1) {
-        x = x - width;
-        y++;
-    }
+    context.fillStyle = colours[i % colours.length];//Select colour
+    var x = i % width;//x is the remainder of i/width
+    var y = ~~(i / width);//y is the rounded i/width
     context.fillRect(x*pixelSize,y*pixelSize, pixelSize,pixelSize);//Adds rectangle of pixelSizeXpixelSize pixels at (x,y)
 }
 }
