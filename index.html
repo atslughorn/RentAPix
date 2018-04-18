@@ -10,6 +10,7 @@
 window.onload = function() {drawGraphic()};
 function drawGraphic() {
 var canvas  = document.getElementById("ex1");//Allows javascript to access the canvas object
+canvas.addEventListener("click", function() {clickDetected()});
 var context = canvas.getContext("2d");//Allows javascript to access the canvas data
 var height = window.innerHeight;//Sets height to window height
 var width = window.innerWidth;//Sets width to window height
@@ -17,12 +18,18 @@ var pixelSize = 16;//Sets pixel size
 canvas.height = height;
 canvas.width = width;
 var colours = ["#ff0000", "#ff7700", "#ffff00", "#00ff00", "#0000ff", "#8a2be2", "#c77df3"];
-for (var i = 0; i < height * width / pixelSize; i++) {//This loops throught the colours and sets each pixel
-    context.fillStyle = colours[i % colours.length];//Select colour
+for (var i = 0; i < height * width / pixelSize; i++) {//This generates each pixel with colour and size
+    context.fillStyle = colours[i % colours.length];//Selects colour
     var x = i % width;//x is the remainder of i/width
     var y = ~~(i / width);//y is the rounded i/width
     context.fillRect(x*pixelSize,y*pixelSize, pixelSize,pixelSize);//Adds rectangle of pixelSizeXpixelSize pixels at (x,y)
 }
+}
+
+function clickDetected() {
+	var x = event.x;
+	var y = event.y;
+	alert("x:" + x + "\ny: " + y);
 }
 </script>
 </body>
